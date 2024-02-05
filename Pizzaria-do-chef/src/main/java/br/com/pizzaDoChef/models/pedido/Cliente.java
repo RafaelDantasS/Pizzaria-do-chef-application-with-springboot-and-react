@@ -31,13 +31,9 @@ public class Cliente implements Serializable{
 	private String adress;
 	@Column
 	private String cep;
+	@Column
+	private String formaPagamento;
 	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL) 
-	@JsonIgnore
-	private List<PizzaPedido> pizzas;
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<BebidaPedido> bebidas;
 	public Long getId() {
 		return id;
 	}
@@ -53,12 +49,10 @@ public class Cliente implements Serializable{
 	public String getCep() {
 		return cep;
 	}
-	public List<PizzaPedido> getPizzas() {
-		return pizzas;
+	public String getFormaPagamento() {
+		return formaPagamento;
 	}
-	public List<BebidaPedido> getBebidas() {
-		return bebidas;
-	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -74,17 +68,15 @@ public class Cliente implements Serializable{
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public void setPizzas(List<PizzaPedido> pizzas) {
-		this.pizzas = pizzas;
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
 	}
-	public void setBebidas(List<BebidaPedido> bebidas) {
-		this.bebidas = bebidas;
 	
-	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(adress, bebidas, cep, id, name, pizzas, tel);
+		return Objects.hash(adress, cep, formaPagamento, id, name, tel);
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -95,9 +87,9 @@ public class Cliente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(adress, other.adress) && Objects.equals(bebidas, other.bebidas)
-				&& Objects.equals(cep, other.cep) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(pizzas, other.pizzas) && Objects.equals(tel, other.tel);
+		return Objects.equals(adress, other.adress) && Objects.equals(cep, other.cep)
+				&& Objects.equals(formaPagamento, other.formaPagamento) && Objects.equals(id, other.id)
+				&& Objects.equals(name, other.name) && Objects.equals(tel, other.tel);
 	}
 	
 	

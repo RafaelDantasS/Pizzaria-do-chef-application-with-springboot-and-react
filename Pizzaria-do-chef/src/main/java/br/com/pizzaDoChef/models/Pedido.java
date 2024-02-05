@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import br.com.pizzaDoChef.models.pedido.BebidaPedido;
+import br.com.pizzaDoChef.models.pedido.Cliente;
+import br.com.pizzaDoChef.models.pedido.PizzaPedido;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -21,21 +26,18 @@ public class Pedido implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "person_name",nullable = false)
-	private String personName;
-	@Column(name = "tel_number", nullable = false)
-	private String telNumber;
-	@Column(nullable = false)
-	private String pizzas;
-	@Column(nullable = true)
-	private String bebidas;
-	@Column(nullable = false)
-	private String adress;
-	@Column(nullable = false)
+	@OneToOne
+	private Cliente cliente;
+	
+	@OneToMany
+	private PizzaPedido pizzaPedido;
+	
+	@OneToMany
+	private BebidaPedido bebidaPedido;
+	
+	@Column
 	private double total;
-	@Column(nullable = false)
-	private Date data;
-
+	
 	public Long getId() {
 		return id;
 	}
