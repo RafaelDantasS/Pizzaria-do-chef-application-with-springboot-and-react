@@ -9,4 +9,6 @@
 -serão utilizados para injeção de dados durante desenvolvimento migrations com flyway no intuito de facilitar o funcionamento das  APIs.
 
 -parte de sua documentação sera feita no spring boot utilizando anotações do swagger enquanto outra parte sera passada pelo git hub, por exemplo
-os envirioments utilizados no postman.
+os envirioments utilizados no postman assim como informações ficticias no banco de dados.
+
+
